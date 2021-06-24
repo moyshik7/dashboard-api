@@ -7,7 +7,7 @@ module.exports = class Database {
   }
   static async connect(url, dbName) {
     return new Promise((resolve, reject) => {
-      const mongoClient = new mongodb.MongoClient(url, {
+      const mongoClient = new mongodb.MongoClient(`${url}${dbName}?retryWrites=true&w=majority`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
