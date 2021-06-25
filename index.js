@@ -58,6 +58,7 @@ app.all("/", async (request, res) => {
           return res.send({ code: 1004, data: "Error on our Side" });
         });
       if (!oauthData.access_token) {
+	console.log(oauthData)
         return res.send({ code: 1003, data: "Invalid response" });
       }
       const SaveData = oauthData;
@@ -242,15 +243,19 @@ app.post("/update", (req, res) => {
           !req.body.memes ||
           !req.body.memes.channel ||
           req.body.memes.channel == "0" ||
-          (!g.memes && req.body.memes.channel) ||
+          (!g.memes && !req.body.memes.channel) ||
           req.body.memes.channel == g.memes.channel
         ) {
           nr.memes = g.memes; //Old value
         } else {
+	  let aer;
           nr.memes = await CreateWebhook(
             "Plubin - Memes",
             req.body.memes.channel
-          );
+          ).catch(err => aer = err)
+	  if(aer){
+	    return res.send({ code: 1006, data: "Permission denied" })
+	  }
           nr.memes = {};
           nr.memes.channel = nr.memes.channel_id;
           nr.memes.guild = nr.memes.guild_id;
