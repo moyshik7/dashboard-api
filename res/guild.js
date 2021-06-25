@@ -20,18 +20,18 @@ Default user type
 const fetch = require("node-fetch");
 
 module.exports = (oauthData) => {
-  return new Promise((resolve, reject) => {
-    fetch("https://discord.com/api/users/@me/guilds", {
-      headers: {
-        authorization: `${oauthData.token_type} ${oauthData.access_token}`,
-      },
-    })
-      .then((r) => r.json())
-      .then((res) => {
-        resolve(res);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
+    return new Promise((resolve, reject) => {
+        fetch("https://discord.com/api/users/@me/guilds", {
+            headers: {
+                authorization: `${oauthData.token_type} ${oauthData.access_token}`,
+            },
+        })
+            .then((r) => r.json())
+            .then((res) => {
+                resolve(res);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
 };
