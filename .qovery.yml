@@ -1,11 +1,11 @@
 ---
 application:
-  name: "dashboard-api"
-  project: "plubin"
-  organization: "QoveryCommunity"
+    name: "dashboard-api"
+    project: "plubin"
+    organization: "QoveryCommunity"
 routers:
-- name: "main-dashboard-api"
-  routes:
-  - application_name: "dashboard-api"
-    paths:
-    - "/*"
+    - name: "main-dashboard-api"
+      routes:
+          - application_name: "dashboard-api"
+            paths:
+                - "/*"
