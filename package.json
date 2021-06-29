@@ -9,7 +9,8 @@
         "express": "^4.17.1",
         "md5": "^2.3.0",
         "mongodb": "^3.6.9",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^2.6.1",
+        "reddit-image-fetcher": "^2.0.7"
     },
     "devDependencies": {
         "eslint": "^7.29.0"

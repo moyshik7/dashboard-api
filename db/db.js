@@ -129,4 +129,21 @@ module.exports = class Database {
                 .catch(reject);
         });
     }
+    async GetAllGuildData() {
+        return new Promise((resolve, reject) => {
+            const mongod = this._db.db(this._dbName);
+            mongod
+                .collection("AutoPostWebhook")
+                .find({}, {
+                    projection: {
+                        _id: 0,
+                    }
+                })
+                .toArray()
+                .then((res) => {
+                    resolve(res);
+                })
+                .catch(reject);
+        });
+    }
 };
