@@ -90,7 +90,6 @@ module.exports = (app, db) => {
                             channel: "0",
                         };
                     }
-                    //console.log(req.body.memes)
                     if (
                         !req.body.memes ||
                         !req.body.memes.channel ||
@@ -99,13 +98,13 @@ module.exports = (app, db) => {
                     ) {
                         try{
                             if(
-                                (req.body.nsfw.channel == "0")||
-                                !req.body.nsfw
+                                (req.body.memes.channel == "0")||
+                                !req.body.memes
                             ){
-                            nr.nsfw = null
-                        } else {
-                            nr.nsfw = g.nsfw;
-                        }
+                                nr.memes = null
+                            } else {
+                                nr.memes = g.memes;
+                            }
                         } catch (err) {
                             console.log(err)
                         }
