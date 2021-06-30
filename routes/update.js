@@ -90,6 +90,7 @@ module.exports = (app, db) => {
                             channel: "0",
                         };
                     }
+                    //console.log(req.body.memes)
                     if (
                         !req.body.memes ||
                         !req.body.memes.channel ||
@@ -123,6 +124,7 @@ module.exports = (app, db) => {
                         nr.memes.channel = nr.memes.channel_id;
                         nr.memes.guild = nr.memes.guild_id;
                     }
+                    console.log(req.body.nsfw)
                     if (
                         !req.body.nsfw ||
                         !req.body.nsfw.channel ||
@@ -130,6 +132,7 @@ module.exports = (app, db) => {
                         //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
+                        console.log("Passed the first")
                         if(
                             req.body.nsfw && 
                             (
@@ -137,6 +140,7 @@ module.exports = (app, db) => {
                                 !req.body.nsfw
                             )
                         ){
+                            console.log("Passed the second")
                             nr.nsfw = null
                         } else {
                             nr.nsfw = g.nsfw;
