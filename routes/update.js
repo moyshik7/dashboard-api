@@ -110,7 +110,6 @@ module.exports = (app, db) => {
                                 data: "Permission denied",
                             });
                         }
-                        nr.memes = {};
                         nr.memes.channel = nr.memes.channel_id;
                         nr.memes.guild = nr.memes.guild_id;
                     }
@@ -138,7 +137,7 @@ module.exports = (app, db) => {
                                 data: "Permission denied",
                             });
                         }
-                        nr.nsfw = {};
+                        console.log(nr.nsfw)
                         nr.nsfw.channel = nr.nsfw.channel_id;
                         nr.nsfw.guild = nr.nsfw.guild_id;
                     }
