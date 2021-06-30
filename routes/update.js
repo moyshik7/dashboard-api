@@ -96,7 +96,11 @@ module.exports = (app, db) => {
                         (req.body.memes.channel == "0") ||
                         (req.body.memes.channel == g.memes.channel)
                     ) {
-                        nr.memes = g.memes;
+                        if(req.body.memes && (req.body.memes.channel == "0")){
+                            nr.memes = null
+                        } else {
+                            nr.memes = g.memes;
+                        }
                     } else {
                         let aer;
                         nr.memes = await CreateWebhook(
@@ -120,10 +124,11 @@ module.exports = (app, db) => {
                         //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
-                        /**
-                         * Keep the old value
-                         */
-                        nr.nsfw = g.nsfw;
+                        if(req.body.nsfw && (req.body.nsfw.channel == "0")){
+                            nr.nsfw = null
+                        } else {
+                            nr.nsfw = g.nsfw;
+                        }
                     } else {
                         let aer;
                         nr.nsfw = await CreateWebhook(
@@ -137,7 +142,7 @@ module.exports = (app, db) => {
                                 data: "Permission denied",
                             });
                         }
-                        console.log(nr.nsfw)
+                        //console.log(nr.nsfw)
                         nr.nsfw.channel = nr.nsfw.channel_id;
                         nr.nsfw.guild = nr.nsfw.guild_id;
                     }
