@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = new express();
 app.use(cors());
 app.use(express.json());
-const Webhook = require('./webhook.js')
+const Webhook = require("./webhook.js");
 const Database = require("./db/db.js");
 
 const { PORT, DB_URL, DB_NAME } = require("./settings.js");
@@ -16,11 +16,11 @@ Database.connect(DB_URL, DB_NAME)
             return console.log(`Can't connect to database`);
         }
         db = res;
-        Webhook(db) //Test
+        Webhook(db); //Test
         setInterval(() => {
-            Webhook(db)
-        },5*60*1000)
-        console.log("Autopost started")
+            Webhook(db);
+        }, 5 * 60 * 1000);
+        console.log("Autopost started");
         /**
          * home.js will listen to '/' route
          */

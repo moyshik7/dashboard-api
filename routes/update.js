@@ -93,20 +93,20 @@ module.exports = (app, db) => {
                     if (
                         !req.body.memes ||
                         !req.body.memes.channel ||
-                        (req.body.memes.channel == "0") ||
-                        (req.body.memes.channel == g.memes.channel)
+                        req.body.memes.channel == "0" ||
+                        req.body.memes.channel == g.memes.channel
                     ) {
-                        try{
-                            if(
-                                (req.body.memes.channel == "0")||
+                        try {
+                            if (
+                                req.body.memes.channel == "0" ||
                                 !req.body.memes
-                            ){
-                                nr.memes = null
+                            ) {
+                                nr.memes = null;
                             } else {
                                 nr.memes = g.memes;
                             }
                         } catch (err) {
-                            console.log(err)
+                            console.log(err);
                         }
                     } else {
                         let aer;
@@ -124,24 +124,24 @@ module.exports = (app, db) => {
                         nr.memes.channel = nr.memes.channel_id;
                         nr.memes.guild = nr.memes.guild_id;
                     }
-                    console.log(req.body.nsfw)
+                    console.log(req.body.nsfw);
                     if (
                         !req.body.nsfw ||
                         !req.body.nsfw.channel ||
-                        (req.body.nsfw.channel == "0") ||
-                        (req.body.nsfw.channel == g.nsfw.channel)
+                        req.body.nsfw.channel == "0" ||
+                        req.body.nsfw.channel == g.nsfw.channel
                     ) {
-                        try{
-                            if(
-                                (req.body.nsfw.channel == "0")||
+                        try {
+                            if (
+                                req.body.nsfw.channel == "0" ||
                                 !req.body.nsfw
-                            ){
-                            nr.nsfw = null
-                        } else {
-                            nr.nsfw = g.nsfw;
-                        }
+                            ) {
+                                nr.nsfw = null;
+                            } else {
+                                nr.nsfw = g.nsfw;
+                            }
                         } catch (err) {
-                            console.log(err)
+                            console.log(err);
                         }
                     } else {
                         let aer;
