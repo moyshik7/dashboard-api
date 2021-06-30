@@ -124,7 +124,7 @@ module.exports = (app, db) => {
                         nr.memes.channel = nr.memes.channel_id;
                         nr.memes.guild = nr.memes.guild_id;
                     }
-                    console.log(`req.body.nsfw: ${req.body.nsfw}`)
+                    console.log(req.body.nsfw)
                     if (
                         !req.body.nsfw ||
                         !req.body.nsfw.channel ||
@@ -132,9 +132,9 @@ module.exports = (app, db) => {
                         //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
-                        console.log("Passed the first")
+                        console.log("passed the first")
                         if(
-                            !req.body.nsfw || 
+                            !req.body.nsfw && 
                             (
                                 (req.body.nsfw.channel == "0")||
                                 !req.body.nsfw
