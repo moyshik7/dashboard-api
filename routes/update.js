@@ -94,8 +94,8 @@ module.exports = (app, db) => {
                         !req.body.memes ||
                         !req.body.memes.channel ||
                         !req.body.memes ||
-                        req.body.memes.channel == "0" ||
-                        req.body.memes.channel == g.memes.channel
+                        (req.body.memes.channel == "0") ||
+                        (req.body.memes.channel == g.memes.channel)
                     ) {
                         nr.memes = g.memes;
                     } else {
@@ -120,7 +120,7 @@ module.exports = (app, db) => {
                         !req.body.nsfw.channel ||
                         req.body.nsfw.channel == "0" ||
                         (!g.nsfw && !req.body.nsfw.channel) ||
-                        req.body.memes.channel == g.nsfw.channel
+                        (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
                         /**
                          * Keep the old value
