@@ -133,17 +133,18 @@ module.exports = (app, db) => {
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
                         console.log("passed the first")
-                        if(
-                            !req.body.nsfw && 
-                            (
+                        try{
+                            if(
                                 (req.body.nsfw.channel == "0")||
                                 !req.body.nsfw
-                            )
-                        ){
+                            ){
                             console.log("Passed the second")
                             nr.nsfw = null
                         } else {
                             nr.nsfw = g.nsfw;
+                        }
+                        } catch (err) {
+                            console.log(err)
                         }
                     } else {
                         let aer;
