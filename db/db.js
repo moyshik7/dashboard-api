@@ -134,11 +134,14 @@ module.exports = class Database {
             const mongod = this._db.db(this._dbName);
             mongod
                 .collection("AutoPostWebhook")
-                .find({}, {
-                    projection: {
-                        _id: 0,
+                .find(
+                    {},
+                    {
+                        projection: {
+                            _id: 0,
+                        },
                     }
-                })
+                )
                 .toArray()
                 .then((res) => {
                     resolve(res);
