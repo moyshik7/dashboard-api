@@ -93,7 +93,6 @@ module.exports = (app, db) => {
                     if (
                         !req.body.memes ||
                         !req.body.memes.channel ||
-                        !req.body.memes ||
                         (req.body.memes.channel == "0") ||
                         (req.body.memes.channel == g.memes.channel)
                     ) {
@@ -118,8 +117,8 @@ module.exports = (app, db) => {
                     if (
                         !req.body.nsfw ||
                         !req.body.nsfw.channel ||
-                        req.body.nsfw.channel == "0" ||
-                        (!g.nsfw && !req.body.nsfw.channel) ||
+                        (req.body.nsfw.channel == "0") ||
+                        //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
                         /**
