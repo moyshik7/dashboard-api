@@ -19,7 +19,7 @@ Database.connect(DB_URL, DB_NAME)
         Webhook(db) //Test
         setInterval(() => {
             Webhook(db)
-        },7*60*1000)
+        },5*60*1000)
         console.log("Autopost started")
         /**
          * home.js will listen to '/' route

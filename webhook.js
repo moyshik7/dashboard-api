@@ -20,13 +20,13 @@ const SendWebhook = (_embeds, _id, _token) => {
 const Send = async (AllGuilds) => {
     let rp_memes = await reddit.fetch({
         type: 'custom',
-	    total: '10',
+	    total: '5',
 	    subreddit: ['memes', 'dankmemes', 'goodanimemes']
     })
     let rp_nsfw = await reddit.fetch({
         type: 'custom',
-	    total: '10',
-	    subreddit: ['hentai']
+	    total: '5',
+	    subreddit: ['porn', 'hentai']
     })
     let ro_memes = []
     let ro_nsfw = []
