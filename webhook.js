@@ -51,11 +51,8 @@ const Send = async (AllGuilds) => {
     AllGuilds.forEach(g => {
         if(g.memes && g.memes.id){
     	    SendWebhook(ro_memes, g.memes.id, g.memes.token)
-            console.log('sent memes')
         }
-        console.log(g.nsfw)
         if(g.nsfw && g.nsfw.id){
-            console.log('sent nsfw')
     	    SendWebhook(ro_nsfw, g.nsfw.id, g.nsfw.token)
         }
     })
@@ -64,6 +61,5 @@ const Send = async (AllGuilds) => {
 module.exports = async (db) => {
     db.GetAllGuildData().then(_allGuilds => {
         Send(_allGuilds)
-        console.log("Sending webhook")
     }).catch(console.log)
 }

@@ -97,16 +97,17 @@ module.exports = (app, db) => {
                         (req.body.memes.channel == "0") ||
                         (req.body.memes.channel == g.memes.channel)
                     ) {
-                        if(
-                            req.body.memes &&
-                            (
-                                (req.body.memes.channel == "0") ||
-                                !req.body.memes.channel
-                            )
-                        ){
-                            nr.memes = null
+                        try{
+                            if(
+                                (req.body.nsfw.channel == "0")||
+                                !req.body.nsfw
+                            ){
+                            nr.nsfw = null
                         } else {
-                            nr.memes = g.memes;
+                            nr.nsfw = g.nsfw;
+                        }
+                        } catch (err) {
+                            console.log(err)
                         }
                     } else {
                         let aer;
@@ -129,16 +130,13 @@ module.exports = (app, db) => {
                         !req.body.nsfw ||
                         !req.body.nsfw.channel ||
                         (req.body.nsfw.channel == "0") ||
-                        //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
-                        console.log("passed the first")
                         try{
                             if(
                                 (req.body.nsfw.channel == "0")||
                                 !req.body.nsfw
                             ){
-                            console.log("Passed the second")
                             nr.nsfw = null
                         } else {
                             nr.nsfw = g.nsfw;
@@ -159,7 +157,6 @@ module.exports = (app, db) => {
                                 data: "Permission denied",
                             });
                         }
-                        //console.log(nr.nsfw)
                         nr.nsfw.channel = nr.nsfw.channel_id;
                         nr.nsfw.guild = nr.nsfw.guild_id;
                     }
