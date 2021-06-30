@@ -26,7 +26,7 @@ const Send = async (AllGuilds) => {
     let rp_nsfw = await reddit.fetch({
         type: 'custom',
 	    total: '10',
-	    subreddit: ['hentai', 'tentai']
+	    subreddit: ['hentai']
     })
     let ro_memes = []
     let ro_nsfw = []
@@ -53,6 +53,7 @@ const Send = async (AllGuilds) => {
     	    SendWebhook(ro_memes, g.memes.id, g.memes.token)
             console.log('sent memes')
         }
+        console.log(g.nsfw)
         if(g.nsfw && g.nsfw.id){
             console.log('sent nsfw')
     	    SendWebhook(ro_nsfw, g.nsfw.id, g.nsfw.token)
