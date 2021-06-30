@@ -96,7 +96,13 @@ module.exports = (app, db) => {
                         (req.body.memes.channel == "0") ||
                         (req.body.memes.channel == g.memes.channel)
                     ) {
-                        if(req.body.memes && (req.body.memes.channel == "0")){
+                        if(
+                            req.body.memes &&
+                            (
+                                (req.body.memes.channel == "0") ||
+                                !req.body.memes.channel
+                            )
+                        ){
                             nr.memes = null
                         } else {
                             nr.memes = g.memes;
@@ -124,7 +130,13 @@ module.exports = (app, db) => {
                         //(!g.nsfw && !req.body.nsfw.channel) ||
                         (req.body.nsfw.channel == g.nsfw.channel)
                     ) {
-                        if(req.body.nsfw && (req.body.nsfw.channel == "0")){
+                        if(
+                            req.body.nsfw && 
+                            (
+                                (req.body.nsfw.channel == "0")||
+                                !req.body.nsfw
+                            )
+                        ){
                             nr.nsfw = null
                         } else {
                             nr.nsfw = g.nsfw;
